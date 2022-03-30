@@ -2,6 +2,9 @@ package com.trybe.acc.java.sistemadevotacao;
 
 public class PessoaEleitora extends Pessoa {
 
+  /**
+   * Método PessoaEleitora.
+   */
   private String cpf;
   // nome --> herdado da classe pessoa;
 

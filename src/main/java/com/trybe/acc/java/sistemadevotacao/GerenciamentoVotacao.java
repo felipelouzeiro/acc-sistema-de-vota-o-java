@@ -3,11 +3,13 @@ package com.trybe.acc.java.sistemadevotacao;
 import java.util.ArrayList;
 
 public class GerenciamentoVotacao {
-  private ArrayList<Object> pessoasCandidatas;
-  private ArrayList<Object> pessoasEleitoras;
-  private ArrayList<String> cpfComputado;
+  private ArrayList<PessoaCandidata> pessoasCandidatas = new ArrayList<PessoaCandidata>();
+  private ArrayList<PessoaEleitora> pessoasEleitoras = new ArrayList<PessoaEleitora>();
   private int totalVotos;
 
+  /**
+   * Método cadastrarPessoaCandidata.
+   */
   public void cadastrarPessoaCandidata(String nome, int numero) {
     // verifica numero
     // se numero da pessoa candidata já registrado:
@@ -18,6 +20,9 @@ public class GerenciamentoVotacao {
     // e adciona no array pessoasCandidatas;
   }
 
+  /**
+   * Método cadastrarPessoaEleitora.
+   */
   public void cadastrarPessoaEleitora(String nome, String cpf) {
     // verifica cpf
     // se cpf da pessoa eleitora já registrado:
@@ -28,6 +33,9 @@ public class GerenciamentoVotacao {
     // e adciona no array pessoasEleitoras;
   }
 
+  /**
+   * Método votar.
+   */
   public void votar(String cpfPessoaEleitora, int numeroPessoaCandidata) {
     // verifica se cpf já está no array cpfComputado
     // se cpf da pessoa eleitora já registrado:
@@ -38,6 +46,9 @@ public class GerenciamentoVotacao {
     // insere cpf da pessoaEleitora no array cpfComputado
   }
 
+  /**
+   * Método mostraResultado.
+   */
   public void mostraResultado() {
     // verifica se já existe algum voto computado
     // se não:

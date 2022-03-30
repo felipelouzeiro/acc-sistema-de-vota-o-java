@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Principal {
 
+  /**
+   * Classe principal.
+   */
   public static void main(String[] args) {
 
     GerenciamentoVotacao gerenciamentoVotacao = new GerenciamentoVotacao();

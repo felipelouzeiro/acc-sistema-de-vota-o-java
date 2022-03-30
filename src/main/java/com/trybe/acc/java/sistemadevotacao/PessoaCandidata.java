@@ -6,6 +6,9 @@ public class PessoaCandidata extends Pessoa {
   private int numero;
   private int votos;
 
+  /**
+   * Método construtor.
+   */
   public PessoaCandidata(int numero, String nome) {
     this.numero = numero;
     this.nome = nome;

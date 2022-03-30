@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class GerenciamentoVotacao {
   private ArrayList<PessoaCandidata> pessoasCandidatas = new ArrayList<PessoaCandidata>();
   private ArrayList<PessoaEleitora> pessoasEleitoras = new ArrayList<PessoaEleitora>();
+  private ArrayList<String> cpfComputado = new ArrayList<String>();
   private int totalVotos;
 
   /**
@@ -25,26 +26,33 @@ public class GerenciamentoVotacao {
    * Método cadastrarPessoaEleitora.
    */
   public void cadastrarPessoaEleitora(String nome, String cpf) {
-    // verifica cpf
-    // se cpf da pessoa eleitora já registrado:
-    System.out.println("Pessoa eleitora já cadastrada!");
-    // se não:
-    PessoaEleitora pessoaEleitora = new PessoaEleitora();
-    // passando o nome e cpf para o construtor dessa classe;
-    // e adciona no array pessoasEleitoras;
+    for (PessoaEleitora eleitor : pessoasEleitoras) {
+      if (eleitor.getCpf() == cpf) {
+        System.out.println("Pessoa eleitora já cadastrada!");
+      } else {
+        PessoaEleitora pessoaEleitora = new PessoaEleitora(nome, cpf);
+        pessoasEleitoras.add(pessoaEleitora);
+      }
+    }
   }
 
   /**
    * Método votar.
    */
   public void votar(String cpfPessoaEleitora, int numeroPessoaCandidata) {
-    // verifica se cpf já está no array cpfComputado
-    // se cpf da pessoa eleitora já registrado:
-    System.out.println("Pessoa eleitora já votou!");
-    // se não, percorre array pessoasCandidatas, e chama o metodo recebeVoto:
-    PessoaCandidata pessoaCandidata = new PessoaCandidata();
-    // recebeVoto
-    // insere cpf da pessoaEleitora no array cpfComputado
+    for (String cpf : cpfComputado) {
+      if (cpf == cpfPessoaEleitora) {
+        System.out.println("Pessoa eleitora já votou!");
+      } else {
+        for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
+          if (pessoaCandidata.getNumero() == numeroPessoaCandidata) {
+            pessoaCandidata.recebeVoto();
+            cpfComputado.add(cpfPessoaEleitora);
+          }
+        }
+
+      }
+    }
   }
 
   /**

@@ -28,6 +28,8 @@ public class Principal {
         System.out.println("Entre com o número da pessoa candidata:");
         Short numeroPessoaCandidata = scanner.nextShort();
 
+        gerenciamentoVotacao.cadastrarPessoaCandidata(nomePessoaCandidata, numeroPessoaCandidata);
+
       } else if (opcao != 2) {
         System.out.println("Entre com uma opção válida!");
       }
@@ -48,6 +50,8 @@ public class Principal {
         System.out.println("Entre com o cpf da pessoa eleitora:");
         String cpfPessoaEleitora = scanner.next();
 
+        gerenciamentoVotacao.cadastrarPessoaEleitora(nomePessoaEleitora, cpfPessoaEleitora);
+
       } else if (opcao != 2) {
         System.out.println("Entre com uma opção válida!");
       }
@@ -67,6 +71,8 @@ public class Principal {
         String cpfPessoaEleitoraVotacao = scanner.next();
         System.out.println("Entre com o numero da pessoa candidata:");
         Short numeroPessoaCandidataVotacao = scanner.nextShort();
+
+        gerenciamentoVotacao.votar(cpfPessoaEleitoraVotacao, numeroPessoaCandidataVotacao);
 
       } else if (opcao == 2) {
         System.out.println("Nome: Maria - 1 votos ( 100.0% ) \n Total de votos: 1");

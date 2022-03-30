@@ -50,7 +50,6 @@ public class GerenciamentoVotacao {
             cpfComputado.add(cpfPessoaEleitora);
           }
         }
-
       }
     }
   }
@@ -59,20 +58,26 @@ public class GerenciamentoVotacao {
    * Método mostraResultado.
    */
   public void mostraResultado() {
-    // verifica se já existe algum voto computado
-    // se não:
-    System.out.println("É preciso ter pelo menos um voto para mostrar o resultado.");
-    // se sim:
-    // imprime resultado
-    System.out.println("Nome: Maria - 1 votos ( 100.0% ) \n Total de votos: 1");
+    if (totalVotos == 0) {
+      System.out.println("É preciso ter pelo menos um voto para mostrar o resultado.");
+    } else {
+      for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
+        System.out.println(
+            "Nome: " + pessoaCandidata.getNome() + " - "
+                + pessoaCandidata.getVotos() + "votos" + "( "
+                + calculaPorcentagem(pessoasCandidatas.indexOf(pessoaCandidata)) + "% )");
+      }
+      System.out.println("Total de votos: " + totalVotos);
+    }
   }
 
   private double calculaPorcentagem(int indicePessoaCandidata) {
+    int votosPessoaCandidata = pessoasCandidatas.get(indicePessoaCandidata).getVotos();
+    return Math.round((votosPessoaCandidata * 100) / totalVotos);
     // verifica o objeto do indice em pessoasCandidatas, pega a porcentagem do
     // numero de votos dessa pessoa;
 
     // deve-se converter o numero de votos para float ou double e utilizar o metodo
     // round ou math do java para converter em uma casa decimal
-    return totalVotos;
   }
 }

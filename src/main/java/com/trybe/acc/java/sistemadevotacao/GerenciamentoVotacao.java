@@ -85,12 +85,12 @@ public class GerenciamentoVotacao {
       System.out.println("É preciso ter pelo menos um voto para mostrar o resultado.");
     } else {
       for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
-        String nomePessoaCandidata = pessoaCandidata.getNome();
-        int votosPessoaCandidata = pessoaCandidata.getVotos();
+        String nome = pessoaCandidata.getNome();
+        int votos = pessoaCandidata.getVotos();
         double porcentagemVotos = calculaPorcentagem(pessoasCandidatas.indexOf(pessoaCandidata));
 
         System.out.println(
-            "Nome: " + nomePessoaCandidata + " - " + votosPessoaCandidata + "votos" + "( " + porcentagemVotos + "% )");
+            "Nome: " + nome + " - " + votos + "votos" + "( " + porcentagemVotos + "% )");
       }
       System.out.println("Total de votos: " + totalVotos);
     }

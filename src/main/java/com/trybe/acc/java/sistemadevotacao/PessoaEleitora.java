@@ -9,8 +9,8 @@ public class PessoaEleitora extends Pessoa {
   // nome --> herdado da classe pessoa;
 
   public PessoaEleitora(String nome, String cpf) {
-    this.cpf = cpf;
     this.nome = nome;
+    this.cpf = cpf;
   }
 
   @Override

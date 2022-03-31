@@ -21,13 +21,18 @@ public class GerenciamentoVotacao {
    * Método cadastrarPessoaCandidata.
    */
   public void cadastrarPessoaCandidata(String nome, int numero) {
+    boolean verificacao = false;
+    System.out.println("nome: " + nome + "numero: " + numero);
     for (PessoaCandidata candidato : pessoasCandidatas) {
       if (candidato.getNumero() == numero) {
         System.out.println("Número pessoa candidata já utilizado!");
-      } else {
-        PessoaCandidata pessoaCandidata = new PessoaCandidata(nome, numero);
-        pessoasCandidatas.add(pessoaCandidata);
+        verificacao = true;
       }
+    }
+
+    if (verificacao) {
+      PessoaCandidata pessoaCandidata = new PessoaCandidata(nome, numero);
+      pessoasCandidatas.add(pessoaCandidata);
     }
   }
 
@@ -35,13 +40,18 @@ public class GerenciamentoVotacao {
    * Método cadastrarPessoaEleitora.
    */
   public void cadastrarPessoaEleitora(String nome, String cpf) {
+    boolean verificacao = false;
+
     for (PessoaEleitora eleitor : pessoasEleitoras) {
       if (eleitor.getCpf() == cpf) {
         System.out.println("Pessoa eleitora já cadastrada!");
-      } else {
-        PessoaEleitora pessoaEleitora = new PessoaEleitora(nome, cpf);
-        pessoasEleitoras.add(pessoaEleitora);
+        verificacao = true;
       }
+    }
+
+    if (verificacao) {
+      PessoaEleitora pessoaEleitora = new PessoaEleitora(nome, cpf);
+      pessoasEleitoras.add(pessoaEleitora);
     }
   }
 
@@ -49,6 +59,9 @@ public class GerenciamentoVotacao {
    * Método votar.
    */
   public void votar(String cpfPessoaEleitora, int numeroPessoaCandidata) {
+    System.out.println("canditados!" + pessoasCandidatas.size()); // apagar
+    System.out.println("eleitores!" + pessoasEleitoras.size()); // apagar
+
     if (cpfComputado.contains(cpfPessoaEleitora)) {
       System.out.println("Pessoa eleitora já votou!");
     } else {
@@ -72,10 +85,12 @@ public class GerenciamentoVotacao {
       System.out.println("É preciso ter pelo menos um voto para mostrar o resultado.");
     } else {
       for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
+        String nomePessoaCandidata = pessoaCandidata.getNome();
+        int votosPessoaCandidata = pessoaCandidata.getVotos();
+        double porcentagemVotos = calculaPorcentagem(pessoasCandidatas.indexOf(pessoaCandidata));
+
         System.out.println(
-            "Nome: " + pessoaCandidata.getNome() + " - "
-                + pessoaCandidata.getVotos() + "votos" + "( "
-                + calculaPorcentagem(pessoasCandidatas.indexOf(pessoaCandidata)) + "% )");
+            "Nome: " + nomePessoaCandidata + " - " + votosPessoaCandidata + "votos" + "( " + porcentagemVotos + "% )");
       }
       System.out.println("Total de votos: " + totalVotos);
     }

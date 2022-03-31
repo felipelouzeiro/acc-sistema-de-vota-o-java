@@ -87,10 +87,9 @@ public class GerenciamentoVotacao {
       for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
         String nome = pessoaCandidata.getNome();
         int votos = pessoaCandidata.getVotos();
-        double porcentagemVotos = calculaPorcentagem(pessoasCandidatas.indexOf(pessoaCandidata));
+        double porcentagem = calculaPorcentagem(pessoasCandidatas.indexOf(pessoaCandidata));
 
-        System.out.println(
-            "Nome: " + nome + " - " + votos + "votos" + "( " + porcentagemVotos + "% )");
+        System.out.println("Nome: " + nome + " - " + votos + "votos" + "( " + porcentagem + "% )");
       }
       System.out.println("Total de votos: " + totalVotos);
     }

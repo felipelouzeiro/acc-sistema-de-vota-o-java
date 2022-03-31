@@ -30,7 +30,7 @@ public class GerenciamentoVotacao {
       }
     }
 
-    if (verificacao) {
+    if (!verificacao) {
       PessoaCandidata pessoaCandidata = new PessoaCandidata(nome, numero);
       pessoasCandidatas.add(pessoaCandidata);
     }
@@ -49,7 +49,7 @@ public class GerenciamentoVotacao {
       }
     }
 
-    if (verificacao) {
+    if (!verificacao) {
       PessoaEleitora pessoaEleitora = new PessoaEleitora(nome, cpf);
       pessoasEleitoras.add(pessoaEleitora);
     }

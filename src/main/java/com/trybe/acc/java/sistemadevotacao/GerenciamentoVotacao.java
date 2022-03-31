@@ -16,7 +16,7 @@ public class GerenciamentoVotacao {
       if (candidato.getNumero() == numero) {
         System.out.println("Número pessoa candidata já utilizado!");
       } else {
-        PessoaCandidata pessoaCandidata = new PessoaCandidata(numero, nome);
+        PessoaCandidata pessoaCandidata = new PessoaCandidata(nome, numero);
         pessoasCandidatas.add(pessoaCandidata);
       }
     }
@@ -41,15 +41,16 @@ public class GerenciamentoVotacao {
    */
   public void votar(String cpfPessoaEleitora, int numeroPessoaCandidata) {
     for (String cpf : cpfComputado) {
-      if (cpf == cpfPessoaEleitora) {
+      if (cpf.equals(cpfPessoaEleitora)) {
         System.out.println("Pessoa eleitora já votou!");
       } else {
         for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
           if (pessoaCandidata.getNumero() == numeroPessoaCandidata) {
             pessoaCandidata.recebeVoto();
-            cpfComputado.add(cpfPessoaEleitora);
           }
         }
+        cpfComputado.add(cpfPessoaEleitora);
+        totalVotos += 1;
       }
     }
   }
@@ -57,8 +58,9 @@ public class GerenciamentoVotacao {
   /**
    * Método mostraResultado.
    */
-  public void mostraResultado() {
-    if (totalVotos == 0) {
+  public void mostrarResultado() {
+    System.out.println("numero de votos: " + totalVotos);
+    if (totalVotos < 1) {
       System.out.println("É preciso ter pelo menos um voto para mostrar o resultado.");
     } else {
       for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {

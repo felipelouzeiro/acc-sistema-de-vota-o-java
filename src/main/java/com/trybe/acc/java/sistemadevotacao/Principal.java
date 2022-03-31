@@ -26,7 +26,7 @@ public class Principal {
         System.out.println("Entre com o nome da pessoa candidata:");
         String nomePessoaCandidata = scanner.next();
         System.out.println("Entre com o número da pessoa candidata:");
-        Integer numeroPessoaCandidata = scanner.nextInt();
+        int numeroPessoaCandidata = scanner.nextInt();
 
         gerenciamentoVotacao.cadastrarPessoaCandidata(nomePessoaCandidata, numeroPessoaCandidata);
 
@@ -70,18 +70,18 @@ public class Principal {
         System.out.println("Entre com o cpf da pessoa eleitora:");
         String cpfPessoaEleitoraVotacao = scanner.next();
         System.out.println("Entre com o numero da pessoa candidata:");
-        Integer numeroPessoaCandidataVotacao = scanner.nextInt();
+        int numeroPessoaCandidataVotacao = scanner.nextInt();
 
         gerenciamentoVotacao.votar(cpfPessoaEleitoraVotacao, numeroPessoaCandidataVotacao);
 
       } else if (opcao == 2) {
-        gerenciamentoVotacao.mostraResultado();
+        gerenciamentoVotacao.mostrarResultado();
       } else if (opcao != 3) {
         System.out.println("Entre com uma opção válida!");
       }
     } while (opcao != 3);
 
-    gerenciamentoVotacao.mostraResultado();
+    gerenciamentoVotacao.mostrarResultado();
   }
 
 }

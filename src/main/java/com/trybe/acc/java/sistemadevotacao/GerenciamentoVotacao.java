@@ -3,10 +3,19 @@ package com.trybe.acc.java.sistemadevotacao;
 import java.util.ArrayList;
 
 public class GerenciamentoVotacao {
-  private ArrayList<PessoaCandidata> pessoasCandidatas = new ArrayList<PessoaCandidata>();
-  private ArrayList<PessoaEleitora> pessoasEleitoras = new ArrayList<PessoaEleitora>();
-  private ArrayList<String> cpfComputado = new ArrayList<String>();
+  private ArrayList<PessoaCandidata> pessoasCandidatas;
+  private ArrayList<PessoaEleitora> pessoasEleitoras;
+  private ArrayList<String> cpfComputado;
   private int totalVotos;
+
+  /**
+   * Método construtor.
+   */
+  public GerenciamentoVotacao() { // apenas inicializa as listas
+    this.pessoasCandidatas = new ArrayList<PessoaCandidata>();
+    this.pessoasEleitoras = new ArrayList<PessoaEleitora>();
+    this.cpfComputado = new ArrayList<String>();
+  }
 
   /**
    * Método cadastrarPessoaCandidata.
@@ -40,18 +49,18 @@ public class GerenciamentoVotacao {
    * Método votar.
    */
   public void votar(String cpfPessoaEleitora, int numeroPessoaCandidata) {
-    for (String cpf : cpfComputado) {
-      if (cpf.equals(cpfPessoaEleitora)) {
-        System.out.println("Pessoa eleitora já votou!");
-      } else {
-        for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
-          if (pessoaCandidata.getNumero() == numeroPessoaCandidata) {
-            pessoaCandidata.recebeVoto();
-          }
+    if (cpfComputado.contains(cpfPessoaEleitora)) {
+      System.out.println("Pessoa eleitora já votou!");
+    } else {
+      System.out.println("Pessoa eleitora NAO votou!"); // apagar
+      for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
+        if (pessoaCandidata.getNumero() == numeroPessoaCandidata) {
+          pessoaCandidata.recebeVoto();
         }
-        cpfComputado.add(cpfPessoaEleitora);
-        totalVotos += 1;
       }
+      cpfComputado.add(cpfPessoaEleitora);
+      totalVotos += 1;
+      // }
     }
   }
 
@@ -59,8 +68,7 @@ public class GerenciamentoVotacao {
    * Método mostraResultado.
    */
   public void mostrarResultado() {
-    System.out.println("numero de votos: " + totalVotos);
-    if (totalVotos < 1) {
+    if (totalVotos <= 0) {
       System.out.println("É preciso ter pelo menos um voto para mostrar o resultado.");
     } else {
       for (PessoaCandidata pessoaCandidata : pessoasCandidatas) {
@@ -75,11 +83,6 @@ public class GerenciamentoVotacao {
 
   private double calculaPorcentagem(int indicePessoaCandidata) {
     int votosPessoaCandidata = pessoasCandidatas.get(indicePessoaCandidata).getVotos();
-    return Math.round((votosPessoaCandidata * 100) / totalVotos);
-    // verifica o objeto do indice em pessoasCandidatas, pega a porcentagem do
-    // numero de votos dessa pessoa;
-
-    // deve-se converter o numero de votos para float ou double e utilizar o metodo
-    // round ou math do java para converter em uma casa decimal
+    return Math.round((votosPessoaCandidata * 100.0) / totalVotos);
   }
 }

@@ -82,6 +82,6 @@ public class Principal {
     } while (opcao != 3);
 
     gerenciamentoVotacao.mostrarResultado();
+    scanner.close();
   }
-
 }

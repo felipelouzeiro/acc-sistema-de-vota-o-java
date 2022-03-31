@@ -43,7 +43,8 @@ public class GerenciamentoVotacao {
     boolean verificacao = false;
 
     for (PessoaEleitora eleitor : pessoasEleitoras) {
-      if (eleitor.getCpf() == cpf) {
+
+      if (eleitor.getCpf().equals(cpf)) { // java não sabe comparar strings com "=="
         System.out.println("Pessoa eleitora já cadastrada!");
         verificacao = true;
       }
@@ -62,7 +63,7 @@ public class GerenciamentoVotacao {
     System.out.println("canditados!" + pessoasCandidatas.size()); // apagar
     System.out.println("eleitores!" + pessoasEleitoras.size()); // apagar
 
-    if (cpfComputado.contains(cpfPessoaEleitora)) {
+    if (cpfComputado.contains(cpfPessoaEleitora)) { // testar contains
       System.out.println("Pessoa eleitora já votou!");
     } else {
       System.out.println("Pessoa eleitora NAO votou!"); // apagar
@@ -89,7 +90,7 @@ public class GerenciamentoVotacao {
         int votos = pessoaCandidata.getVotos();
         double porcentagem = calculaPorcentagem(pessoasCandidatas.indexOf(pessoaCandidata));
 
-        System.out.println("Nome: " + nome + " - " + votos + "votos" + "( " + porcentagem + "% )");
+        System.out.println("Nome: " + nome + " - " + votos + " votos" + "( " + porcentagem + "% )");
       }
       System.out.println("Total de votos: " + totalVotos);
     }
